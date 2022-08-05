@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product} from "src/app/models/product";
 import { ProductService } from 'src/app/services/product.service';
 import { HttpClient} from "@angular/common/http";
-import {ProductResponseModel} from 'src/app/models/productResponseModel';
+
 
 @Component({
   selector: 'app-product',
@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
 
   product:Product[] = [];
   dataLoaded = false;
+  filterText="";
 
  constructor(private productService:ProductService) { }
 
