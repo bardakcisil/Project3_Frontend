@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product} from "src/app/models/product";
 import { ProductService } from 'src/app/services/product.service';
 import { HttpClient} from "@angular/common/http";
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,30 +13,34 @@ import { HttpClient} from "@angular/common/http";
 
 export class ProductComponent implements OnInit {
 
-  product:Product[] = [];
+  products:Product[] = [];
   dataLoaded = false;
   filterText="";
 
- constructor(private productService:ProductService) { }
+ constructor(private productService:ProductService, 
+  private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getProducts();
-
+    this.activatedRoute.params.subscribe(params=>{
+      if (params["categoryId"]) {
+        this.getProductsByCategory(params["categoryId"])
+      } else {
+        this.getProducts();
+      }
+    })
   }
 
   getProducts(){
-    //console.log("Api request basladi");
     this.productService.getProducts().subscribe(response=>{
-      this.product = response.data
-      this.dataLoaded = true; //senkron yapi
-      //console.log("Api request bitti");
-    })
-    //dataLoaded = true; //bunu yapma yoksa g.o.
-    //console.log("Method bitti");
+      this.products = response.data
+      this.dataLoaded = true;
+    })} 
 
-  
-    
-      } 
+    getProductsByCategory(categoryId:number){
+      this.productService.getProductsByCategory(categoryId).subscribe(response=>{
+        this.products = response.data
+        this.dataLoaded = true;
+      })} 
 
  }
   
