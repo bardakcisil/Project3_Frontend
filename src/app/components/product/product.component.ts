@@ -47,7 +47,7 @@ export class ProductComponent implements OnInit {
       })} 
 
       addToCart(product:Product){
-        if (product.unitsInStock==0) {
+        if (product.unitsInStock===1) {
           this.toastrService.error("ERROR", product.productName+" isimli urun sepete eklenemez")
           
         } else {
