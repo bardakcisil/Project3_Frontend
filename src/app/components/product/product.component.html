@@ -17,12 +17,12 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Urun adi</th>
-            <th>Kategori</th>
-            <th>Fiyat</th>
-            <th>Kdv'li Fiyat</th>
-            <th>Stok Adedi</th>
-            <th></th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Unit Price</th>
+            <th>VAT Price</th>
+            <th>Units in Stock</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +33,7 @@
         <td> {{product.unitPrice | currency}} </td>
         <td> {{product.unitPrice | vatAdded:18 | currency}} </td>
         <td> {{product.unitsInStock}} </td>
-        <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Sepete Ekle</button></td>
+        <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Add to bucket</button></td>
     </tr>
     </tbody>
 </table>
