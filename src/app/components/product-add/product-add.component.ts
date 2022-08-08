@@ -35,9 +35,14 @@ export class ProductAddComponent implements OnInit {
         console.log(response)
         this.toastrService.success(response.message,"Conguracilations")
       },responseError=>{
-        console.log(responseError.error)
-        this.toastrService.error(responseError.error)
-      })
+        if(responseError.errors.Errors.length>0){
+          console.log(responseError.error.Errors)
+          for (let i = 0; i < responseError.error.Errors[i].ErrorMessage; i++) {
+            this.toastrService.error(responseError.error.Errors,"Correction Error")   
+          }      
+        }
+      }
+      )
 
     } else {
       this.toastrService.error("Check your form again.", "!!!")
