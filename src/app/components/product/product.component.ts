@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   products:Product[] = [];
   dataLoaded = false;
   filterText="";
+  isShownnext: boolean = false ;
 
  constructor(private productService:ProductService, 
   private activatedRoute:ActivatedRoute,
@@ -56,6 +57,10 @@ export class ProductComponent implements OnInit {
         }
         
       }
+
+      showSearched() {
+        this.isShownnext = ! this.isShownnext;
+     }
 
  }
   

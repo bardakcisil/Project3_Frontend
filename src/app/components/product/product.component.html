@@ -1,17 +1,18 @@
+
 <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 
+
 <div class="mb-3">
-    <label for="filterText" class="form-label">Urunu ara</label>
+    <label for="filterText" class="form-label">Search for product</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
      placeholder="search for product">
 </div>
 
-<div *ngIf="filterText.length>2" class="alert alert-primary">
-    {{filterText}} aradiniz
-
-</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+    {{filterText}} aradınız.
+  </div>
 
 <table *ngIf="dataLoaded!=false" class="table">  
     <thead>
